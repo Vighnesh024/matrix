@@ -1,4 +1,5 @@
 // src/components/Signup.jsx
+import styles from "./Form.module.css";
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
@@ -22,13 +23,15 @@ export default function Signup() {
   };
 
   return (
-    <form onSubmit={handleSignup}>
+    <form onSubmit={handleSignup} className={styles.formContainer}>
+      <h2>Sign Up</h2>
       <input
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
+        className={styles.input}
       />
       <input
         type="password"
@@ -37,9 +40,12 @@ export default function Signup() {
         onChange={(e) => setPassword(e.target.value)}
         required
         minLength={6}
+        className={styles.input}
       />
-      <button type="submit">Sign Up</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      <button type="submit" className={styles.button}>
+        Sign Up
+      </button>
+      {error && <p className={styles.errorMessage}>{error}</p>}
     </form>
   );
 }

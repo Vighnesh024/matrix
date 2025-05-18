@@ -1,4 +1,5 @@
 // src/components/Login.jsx
+import styles from "./Form.module.css";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
@@ -22,13 +23,15 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleLogin} className={styles.formContainer}>
+      <h2>Login</h2>
       <input
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
+        className={styles.input}
       />
       <input
         type="password"
@@ -36,9 +39,12 @@ export default function Login() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
+        className={styles.input}
       />
-      <button type="submit">Login</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      <button type="submit" className={styles.button}>
+        Login
+      </button>
+      {error && <p className={styles.errorMessage}>{error}</p>}
     </form>
   );
 }
