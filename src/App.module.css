@@ -73,3 +73,14 @@
 .button:hover {
   background-color: #1e40af;
 }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0.5rem;
+  }
+}
