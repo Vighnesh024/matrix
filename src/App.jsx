@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import styles from './App.module.css';
 
 function Home() {
   return <h2>Welcome to your Social Media Feed</h2>;
@@ -21,7 +22,8 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div style={{ padding: '1rem' }}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Welcome to My Social Media App</h1>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
