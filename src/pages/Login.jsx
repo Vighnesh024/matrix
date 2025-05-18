@@ -1,5 +1,5 @@
 // src/components/Login.jsx
-import styles from "./Form.module.css";
+import styles from "../components/Form.module.css";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
