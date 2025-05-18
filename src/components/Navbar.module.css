@@ -1,8 +1,36 @@
 /* src/components/Navbar.module.css */
+
 .navbar {
-  background-color: #333;
-  color: white;
-  padding: 1rem;
+  background-color: #D4A017; /* Mustard yellow */
+  color: #fff8e1; /* Light cream */
+  padding: 1rem 2rem;
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 2px 8px rgba(139, 108, 26, 0.7);
+  border-radius: 8px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.link {
+  color: #fff8e1;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #4B3B00; /* Dark accent */
+  text-shadow: 0 0 5px #8B6C1A;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #4B3B00; /* Dark accent */
 }
