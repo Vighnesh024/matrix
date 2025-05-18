@@ -34,3 +34,22 @@
   font-size: 1.5rem;
   color: #4B3B00; /* Dark accent */
 }
+.link {
+  color: #666;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  background-color: rgba(255, 235, 59, 0.3); /* Mustard highlight on hover */
+  color: #000;
+}
+
+.active {
+  color: #000;
+  background-color: rgba(255, 235, 59, 0.6); /* Mustard with more opacity */
+  backdrop-filter: blur(8px); /* Adds blur */
+  box-shadow: 0 0 8px rgba(255, 235, 59, 0.7);
+}

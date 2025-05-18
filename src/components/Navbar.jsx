@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom"; // <-- changed to NavLink
 import { auth } from "../firebase";
 import styles from "./Navbar.module.css";
 
@@ -14,27 +14,44 @@ export default function Navbar() {
     return unsubscribe;
   }, []);
 
+  // Helper function to handle active link class toggle
+  const getActiveClass = ({ isActive }) =>
+    isActive ? `${styles.link} ${styles.active}` : styles.link;
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.brand}>MySpaceDev</div>
       <div className={styles.navLinks}>
-        <Link to="/" className={styles.link}>Home</Link>
-        <Link to={user ? "/profile" : "/login"} className={styles.link}>
+        <NavLink to="/" className={getActiveClass}>
+          Home
+        </NavLink>
+
+        <NavLink to={user ? "/profile" : "/login"} className={getActiveClass}>
           Profile
-        </Link>
+        </NavLink>
 
         {user ? (
           <button
             onClick={() => auth.signOut()}
             className={styles.logoutButton}
-            style={{ cursor: "pointer", background: "none", border: "none", color: "inherit", fontSize: "1rem" }}
+            style={{
+              cursor: "pointer",
+              background: "none",
+              border: "none",
+              color: "inherit",
+              fontSize: "1rem",
+            }}
           >
             Logout
           </button>
         ) : (
           <>
-            <Link to="/login" className={styles.link}>Login</Link>
-            <Link to="/signup" className={styles.link}>Signup</Link>
+            <NavLink to="/login" className={getActiveClass}>
+              Login
+            </NavLink>
+            <NavLink to="/signup" className={getActiveClass}>
+              Signup
+            </NavLink>
           </>
         )}
       </div>
