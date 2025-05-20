@@ -1,19 +1,26 @@
+// src/firebase.js
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
+// ✅ Replace with your actual Firebase config if it changes
 const firebaseConfig = {
-  apiKey: "AIzaSyC4l4lsPnCVEcBpqlW251orkQDncp_-EHc",
-  authDomain: "myspacedev-9807f.firebaseapp.com",
-  projectId: "myspacedev-9807f",
-  storageBucket: "myspacedev-9807f.firebasestorage.app",
-  messagingSenderId: "576751498836",
-  appId: "1:576751498836:web:3adf4ca2379b334edb9fc1",
-  measurementId: "G-NHBHMXSF92"
+  apiKey: "AIzaSyD-n6zDgkLGrngU0MRKgWHPKJ8fTVdGJ4A",
+  authDomain: "myspace-privacy.firebaseapp.com",
+  projectId: "myspace-privacy",
+  storageBucket: "myspace-privacy.appspot.com",
+  messagingSenderId: "925969044548",
+  appId: "1:925969044548:web:b70d02beee443d0325bc68"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Export initialized services
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
-export { auth, db };
+export { app, auth, db, storage };
