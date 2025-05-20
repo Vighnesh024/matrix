@@ -1,4 +1,3 @@
-// src/components/Signup.jsx
 import styles from "../components/Form.module.css";
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -16,7 +15,7 @@ export default function Signup() {
     setError("");
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate("/profile"); // Redirect after successful signup
+      navigate("/messages"); // Redirect here after signup
     } catch (err) {
       setError(err.message);
     }

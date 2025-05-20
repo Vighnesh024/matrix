@@ -31,24 +31,51 @@ export default function Navbar() {
       </div>
 
       <div className={`${styles.navLinks} ${menuOpen ? styles.showMenu : ""}`}>
-        <NavLink to="/" className={getActiveClass}>
+        <NavLink to="/" className={getActiveClass} onClick={() => setMenuOpen(false)}>
           Home
         </NavLink>
 
-        <NavLink to={user ? "/profile" : "/login"} className={getActiveClass}>
-          Profile
+        <NavLink to="/messages" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+          Messages
+        </NavLink>
+
+        <NavLink to="/create" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+          Create
+        </NavLink>
+
+        <NavLink to="/search" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+          Search
+        </NavLink>
+
+        <NavLink to="/reels" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+          Reels
+        </NavLink>
+
+        <NavLink to="/notifications" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+          Notifications
         </NavLink>
 
         {user ? (
-          <button onClick={() => auth.signOut()} className={styles.logoutButton}>
-            Logout
-          </button>
+          <>
+            <NavLink to="/profile" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+              Profile
+            </NavLink>
+            <button
+              onClick={() => {
+                auth.signOut();
+                setMenuOpen(false);
+              }}
+              className={styles.logoutButton}
+            >
+              Logout
+            </button>
+          </>
         ) : (
           <>
-            <NavLink to="/login" className={getActiveClass}>
+            <NavLink to="/login" className={getActiveClass} onClick={() => setMenuOpen(false)}>
               Login
             </NavLink>
-            <NavLink to="/signup" className={getActiveClass}>
+            <NavLink to="/signup" className={getActiveClass} onClick={() => setMenuOpen(false)}>
               Signup
             </NavLink>
           </>

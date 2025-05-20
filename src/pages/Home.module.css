@@ -1,4 +1,4 @@
-/* Original container for logged out users */
+/* General container for logged out */
 .container {
   max-width: 600px;
   margin: 4rem auto;
@@ -37,59 +37,144 @@ p {
   background-color: #b38600; /* darker mustard */
 }
 
-/* New styles for logged in app layout */
+/* Instagram-like layout */
 
-.appLayout {
+.instagramLayout {
   display: flex;
-  min-height: 70vh;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 3rem auto;
-  gap: 1rem;
+  gap: 1.5rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.sidebar {
-  width: 280px;
-  background-color: #f9f4e6; /* soft mustard background */
+/* Left Sidebar */
+.leftSidebar {
+  width: 220px;
+  background: #f9f4e6;
   padding: 1rem 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 0 8px rgba(191, 144, 0, 0.2);
+  box-shadow: 0 0 10px rgba(191, 144, 0, 0.15);
   color: #4b3200;
 }
 
-.sidebar h3 {
-  margin-top: 0;
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  background-color: #d4aa00;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.profile p {
+  color: #b38600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.navLink {
+  color: #4b3200;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.navLink:hover {
+  background-color: #b38600;
+  color: white;
+}
+
+/* Center Feed */
+.feed {
+  flex-grow: 1;
+  max-width: 600px;
+}
+
+.post {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(191, 144, 0, 0.15);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  color: #4b3200;
+  font-weight: 600;
+}
+
+.postImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.postActions {
+  padding: 0.5rem 1rem 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.postActions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #b38600;
+  transition: color 0.2s ease;
+}
+
+.postActions button:hover {
+  color: #d4aa00;
+}
+
+/* Right Sidebar */
+.rightSidebar {
+  width: 220px;
+  background: #f9f4e6;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(191, 144, 0, 0.15);
+  color: #4b3200;
+}
+
+.rightSidebar h3 {
   border-bottom: 2px solid #b38600;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.3rem;
   margin-bottom: 1rem;
 }
 
-.sidebar ul {
-  list-style-type: none;
+.suggestionsList {
+  list-style: none;
   padding-left: 0;
 }
 
-.sidebar li {
-  margin-bottom: 0.7rem;
+.suggestionsList li {
+  margin-bottom: 0.8rem;
   padding: 0.4rem 0.6rem;
   background: rgba(191, 144, 0, 0.1);
   border-radius: 6px;
-}
-
-.mainContent {
-  flex-grow: 1;
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(191, 144, 0, 0.1);
-  color: #4b3200;
-}
-
-.mainContent h2 {
-  margin-top: 0;
-  color: #b38600;
-}
-
-.mainContent p {
-  font-size: 1.1rem;
 }

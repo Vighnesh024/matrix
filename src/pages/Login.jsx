@@ -1,4 +1,3 @@
-// src/components/Login.jsx
 import styles from "../components/Form.module.css";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -16,7 +15,7 @@ export default function Login() {
     setError("");
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/profile"); // Redirect after successful login
+      navigate("/messages"); // Redirect here after login
     } catch (err) {
       setError(err.message);
     }
