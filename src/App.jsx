@@ -9,6 +9,7 @@ import Messages from "./pages/Messages";
 import Search from "./pages/Search";
 import Reels from "./pages/Reels";
 import Notifications from "./pages/Notifications";
+import Create from "./pages/Create";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/create" element={<Create />} />
           <Route path="/search" element={<Search />} />
           <Route path="/reels" element={<Reels />} />
           <Route path="/notifications" element={<Notifications />} />

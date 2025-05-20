@@ -31,51 +31,37 @@ export default function Navbar() {
       </div>
 
       <div className={`${styles.navLinks} ${menuOpen ? styles.showMenu : ""}`}>
-        <NavLink to="/" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+        <NavLink to="/" className={getActiveClass}>
           Home
         </NavLink>
-
-        <NavLink to="/messages" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+        <NavLink to="/messages" className={getActiveClass}>
           Messages
         </NavLink>
-
-        <NavLink to="/create" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+        <NavLink to="/create" className={getActiveClass}>
           Create
         </NavLink>
-
-        <NavLink to="/search" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+        <NavLink to="/search" className={getActiveClass}>
           Search
         </NavLink>
-
-        <NavLink to="/reels" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+        <NavLink to="/reels" className={getActiveClass}>
           Reels
         </NavLink>
-
-        <NavLink to="/notifications" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+        <NavLink to="/notifications" className={getActiveClass}>
           Notifications
         </NavLink>
-
+        <NavLink to={user ? "/profile" : "/login"} className={getActiveClass}>
+          Profile
+        </NavLink>
         {user ? (
-          <>
-            <NavLink to="/profile" className={getActiveClass} onClick={() => setMenuOpen(false)}>
-              Profile
-            </NavLink>
-            <button
-              onClick={() => {
-                auth.signOut();
-                setMenuOpen(false);
-              }}
-              className={styles.logoutButton}
-            >
-              Logout
-            </button>
-          </>
+          <button onClick={() => auth.signOut()} className={styles.logoutButton}>
+            Logout
+          </button>
         ) : (
           <>
-            <NavLink to="/login" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+            <NavLink to="/login" className={getActiveClass}>
               Login
             </NavLink>
-            <NavLink to="/signup" className={getActiveClass} onClick={() => setMenuOpen(false)}>
+            <NavLink to="/signup" className={getActiveClass}>
               Signup
             </NavLink>
           </>
