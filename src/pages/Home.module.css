@@ -1,5 +1,4 @@
-/* src/pages/Home.module.css */
-
+/* Original container for logged out users */
 .container {
   max-width: 600px;
   margin: 4rem auto;
@@ -36,4 +35,61 @@ p {
 
 .ctaButton:hover {
   background-color: #b38600; /* darker mustard */
+}
+
+/* New styles for logged in app layout */
+
+.appLayout {
+  display: flex;
+  min-height: 70vh;
+  max-width: 900px;
+  margin: 3rem auto;
+  gap: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar {
+  width: 280px;
+  background-color: #f9f4e6; /* soft mustard background */
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(191, 144, 0, 0.2);
+  color: #4b3200;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  border-bottom: 2px solid #b38600;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.sidebar li {
+  margin-bottom: 0.7rem;
+  padding: 0.4rem 0.6rem;
+  background: rgba(191, 144, 0, 0.1);
+  border-radius: 6px;
+}
+
+.mainContent {
+  flex-grow: 1;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(191, 144, 0, 0.1);
+  color: #4b3200;
+}
+
+.mainContent h2 {
+  margin-top: 0;
+  color: #b38600;
+}
+
+.mainContent p {
+  font-size: 1.1rem;
 }
