@@ -15,7 +15,7 @@ export default function Login() {
     setError("");
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/messages"); // Redirect here after login
+      navigate("/"); // Redirect to Home page after login
     } catch (err) {
       setError(err.message);
     }

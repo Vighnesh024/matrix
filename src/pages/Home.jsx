@@ -1,6 +1,6 @@
 import styles from "./Home.module.css";
 import { useAuth } from "../contexts/AuthContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -8,14 +8,18 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("feed");
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
+  useEffect(() => {
+    setActiveSection("feed"); // Reset to feed when user changes (login/logout)
+  }, [user]);
+
+  async function handleLogout() {
     try {
       await logout();
-      navigate("/login");
+      navigate("/login"); // Redirect after logout
     } catch (error) {
-      console.error("Logout failed:", error);
+      console.error("Failed to logout:", error);
     }
-  };
+  }
 
   if (!user) {
     return (
@@ -37,7 +41,9 @@ export default function Home() {
           <div className={styles.avatar}>{user.email[0].toUpperCase()}</div>
           <div>
             <strong>{user.email.split("@")[0]}</strong>
-            <p onClick={() => setActiveSection("profile")}>View Profile</p>
+            <p onClick={() => setActiveSection("profile")} style={{ cursor: "pointer" }}>
+              View Profile
+            </p>
           </div>
         </div>
 
@@ -48,24 +54,33 @@ export default function Home() {
           >
             Home
           </button>
+           <button
+        className={`${styles.navLink} ${activeSection === "reels" ? styles.active : ""}`}
+        onClick={() => {
+          setActiveSection("reels");
+          navigate("/reels");
+        }}
+      >
+        Reels
+      </button>
+           <button
+      className={`${styles.navLink} ${activeSection === "messages" ? styles.active : ""}`}
+      onClick={() => {
+        setActiveSection("messages");
+        navigate("/messages"); // Navigate to Messages page
+      }}
+    >
+      Messages
+    </button>
           <button
-            className={`${styles.navLink} ${activeSection === "stories" ? styles.active : ""}`}
-            onClick={() => setActiveSection("stories")}
-          >
-            Reels
-          </button>
-          <button
-            className={`${styles.navLink} ${activeSection === "messages" ? styles.active : ""}`}
-            onClick={() => setActiveSection("messages")}
-          >
-            Messages
-          </button>
-          <button
-            className={`${styles.navLink} ${activeSection === "profile" ? styles.active : ""}`}
-            onClick={() => setActiveSection("profile")}
-          >
-            Profile
-          </button>
+        className={`${styles.navLink} ${activeSection === "profile" ? styles.active : ""}`}
+        onClick={() => {
+          setActiveSection("profile");
+          navigate("/profile");
+        }}
+      >
+        Profile
+      </button>
         </nav>
 
         <button className={styles.logoutButton} onClick={handleLogout}>
@@ -94,7 +109,7 @@ export default function Home() {
           </div>
         )}
 
-        {activeSection === "stories" && <h2>Reels section coming soon...</h2>}
+        {activeSection === "reels" && <h2>Reels section coming soon...</h2>}
         {activeSection === "messages" && <h2>Messages section placeholder</h2>}
         {activeSection === "profile" && (
           <div>
