@@ -5,7 +5,6 @@ import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [user, setUser] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
@@ -15,48 +14,14 @@ export default function Navbar() {
     return unsubscribe;
   }, []);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
   const getActiveClass = ({ isActive }) =>
     isActive ? `${styles.link} ${styles.active}` : styles.link;
 
   return (
     <nav className={styles.navbar}>
       <div className={styles.brand}>MySpaceDev</div>
-
-      <div className={styles.menuIcon} onClick={toggleMenu}>
-        ☰
-      </div>
-
-      <div className={`${styles.navLinks} ${menuOpen ? styles.showMenu : ""}`}>
-        <NavLink to="/" className={getActiveClass}>
-          Home
-        </NavLink>
-        <NavLink to="/messages" className={getActiveClass}>
-          Messages
-        </NavLink>
-        <NavLink to="/create" className={getActiveClass}>
-          Create
-        </NavLink>
-        <NavLink to="/search" className={getActiveClass}>
-          Search
-        </NavLink>
-        <NavLink to="/reels" className={getActiveClass}>
-          Reels
-        </NavLink>
-        <NavLink to="/notifications" className={getActiveClass}>
-          Notifications
-        </NavLink>
-        <NavLink to={user ? "/profile" : "/login"} className={getActiveClass}>
-          Profile
-        </NavLink>
-        {user ? (
-          <button onClick={() => auth.signOut()} className={styles.logoutButton}>
-            Logout
-          </button>
-        ) : (
+      <div className={styles.navLinks}>
+        {!user && (
           <>
             <NavLink to="/login" className={getActiveClass}>
               Login

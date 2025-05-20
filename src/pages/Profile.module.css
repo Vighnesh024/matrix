@@ -1,0 +1,84 @@
+.profilePage {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profileCard {
+  background: #f9f4e6;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(191, 144, 0, 0.15);
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  color: #4b3200;
+}
+
+.avatarSection {
+  text-align: center;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  background-color: #d4aa00;
+  color: white;
+  font-size: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-weight: bold;
+}
+
+.changePhotoBtn {
+  background: none;
+  border: 2px solid #d4aa00;
+  color: #d4aa00;
+  padding: 0.4rem 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.changePhotoBtn:hover {
+  background-color: #d4aa00;
+  color: white;
+}
+
+.profileDetails {
+  flex-grow: 1;
+}
+
+.username {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #b38600;
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stats div {
+  text-align: center;
+}
+
+.stats strong {
+  display: block;
+  font-size: 1.4rem;
+  color: #4b3200;
+}
+
+.stats span {
+  font-size: 0.9rem;
+  color: #b38600;
+}
+ 

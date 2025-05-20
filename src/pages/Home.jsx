@@ -1,8 +1,21 @@
 import styles from "./Home.module.css";
 import { useAuth } from "../contexts/AuthContext";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const [activeSection, setActiveSection] = useState("feed");
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
 
   if (!user) {
     return (
@@ -21,42 +34,79 @@ export default function Home() {
       {/* Left Sidebar */}
       <aside className={styles.leftSidebar}>
         <div className={styles.profile}>
-          <div className={styles.avatar}>
-            {user.email[0].toUpperCase()}
-          </div>
+          <div className={styles.avatar}>{user.email[0].toUpperCase()}</div>
           <div>
             <strong>{user.email.split("@")[0]}</strong>
-            <p>View Profile</p>
+            <p onClick={() => setActiveSection("profile")}>View Profile</p>
           </div>
         </div>
 
         <nav className={styles.navLinks}>
-          <a href="#" className={styles.navLink}>Home</a>
-          <a href="#" className={styles.navLink}>Stories</a>
-          <a href="#" className={styles.navLink}>Messages</a>
-          <a href="#" className={styles.navLink}>Settings</a>
+          <button
+            className={`${styles.navLink} ${activeSection === "feed" ? styles.active : ""}`}
+            onClick={() => setActiveSection("feed")}
+          >
+            Home
+          </button>
+          <button
+            className={`${styles.navLink} ${activeSection === "stories" ? styles.active : ""}`}
+            onClick={() => setActiveSection("stories")}
+          >
+            Reels
+          </button>
+          <button
+            className={`${styles.navLink} ${activeSection === "messages" ? styles.active : ""}`}
+            onClick={() => setActiveSection("messages")}
+          >
+            Messages
+          </button>
+          <button
+            className={`${styles.navLink} ${activeSection === "profile" ? styles.active : ""}`}
+            onClick={() => setActiveSection("profile")}
+          >
+            Profile
+          </button>
         </nav>
+
+        <button className={styles.logoutButton} onClick={handleLogout}>
+          Logout
+        </button>
       </aside>
 
-      {/* Center Feed */}
+      {/* Main Feed */}
       <main className={styles.feed}>
-        <div className={styles.post}>
-          <div className={styles.postHeader}>
-            <div className={styles.avatar}>{user.email[0].toUpperCase()}</div>
-            <strong>{user.email.split("@")[0]}</strong>
+        {activeSection === "feed" && (
+          <div className={styles.post}>
+            <div className={styles.postHeader}>
+              <div className={styles.avatar}>{user.email[0].toUpperCase()}</div>
+              <strong>{user.email.split("@")[0]}</strong>
+            </div>
+            <div className={styles.postImage}>
+              <img
+                src="https://via.placeholder.com/600x400.png?text=Sample+Post"
+                alt="Sample Post"
+              />
+            </div>
+            <div className={styles.postActions}>
+              <button>❤️ Like</button>
+              <button>💬 Comment</button>
+            </div>
           </div>
-          <div className={styles.postImage}>
-            <img
-              src="https://via.placeholder.com/600x400.png?text=Sample+Post"
-              alt="Sample Post"
-            />
+        )}
+
+        {activeSection === "stories" && <h2>Reels section coming soon...</h2>}
+        {activeSection === "messages" && <h2>Messages section placeholder</h2>}
+        {activeSection === "profile" && (
+          <div>
+            <h2>Change Profile Photo</h2>
+            <p>
+              Username: <strong>{user.email.split("@")[0]}</strong>
+            </p>
+            <p>Posts: 0</p>
+            <p>Followers: 0</p>
+            <p>Following: 0</p>
           </div>
-          <div className={styles.postActions}>
-            <button>❤️ Like</button>
-            <button>💬 Comment</button>
-          </div>
-        </div>
-        {/* Add more posts here */}
+        )}
       </main>
 
       {/* Right Sidebar */}

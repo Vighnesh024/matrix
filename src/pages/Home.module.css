@@ -38,7 +38,6 @@ p {
 }
 
 /* Instagram-like layout */
-
 .instagramLayout {
   display: flex;
   max-width: 1000px;
@@ -90,15 +89,29 @@ p {
 }
 
 .navLink {
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
   color: #4b3200;
-  text-decoration: none;
   font-weight: 600;
   padding: 0.5rem;
   border-radius: 6px;
   transition: background-color 0.3s ease;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
 }
 
 .navLink:hover {
+  background-color: #b38600;
+  color: white;
+}
+
+/* Active state for nav link */
+.active {
   background-color: #b38600;
   color: white;
 }
@@ -177,4 +190,20 @@ p {
   padding: 0.4rem 0.6rem;
   background: rgba(191, 144, 0, 0.1);
   border-radius: 6px;
+}
+
+.logoutButton {
+  background-color: #b38600;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: #d4aa00;
 }
