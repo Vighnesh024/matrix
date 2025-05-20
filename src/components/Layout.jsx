@@ -1,88 +1,108 @@
-import styles from "./Home.module.css";
-import { useAuth } from "../contexts/AuthContext";
-import { useNavigate, Outlet, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Outlet } from "react-router-dom";
+import styles from "./Layout.module.css"; // create this CSS module
 
 export default function Layout() {
-  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
-  async function handleLogout() {
-    try {
-      await logout();
-      navigate("/login");
-    } catch (error) {
-      console.error("Failed to logout:", error);
-    }
-  }
-if (!user) {
-  // If user not logged in, show nothing here, or redirect
-  return null; // Or you can redirect to login if you want here
-}
-
-  // Helper to check if current path starts with target (for active state)
-  const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + "/");
-
   return (
-    <div className={styles.instagramLayout}>
-      {/* Left Sidebar */}
-      <aside className={styles.leftSidebar}>
-        <div className={styles.profile}>
-          <div className={styles.avatar}>{user.email[0].toUpperCase()}</div>
-          <div>
-            <strong>{user.email.split("@")[0]}</strong>
-            <p style={{ cursor: "pointer" }} onClick={() => navigate("/profile")}>
-              View Profile
-            </p>
-          </div>
+    <>
+      {/* Top Bar for Mobile */}
+      <header className={styles.topBar}>
+        <div className={styles.logo} onClick={() => navigate("/")}>
+          MySpaceDev
         </div>
+        <div
+          className={styles.messagesIcon}
+          onClick={() => navigate("/messages")}
+          title="Messages"
+        >
+          💬
+        </div>
+      </header>
 
-        <nav className={styles.navLinks}>
-          <button
-            className={`${styles.navLink} ${isActive("/") ? styles.active : ""}`}
-            onClick={() => navigate("/")}
-          >
-            Home
-          </button>
-          <button
-            className={`${styles.navLink} ${isActive("/reels") ? styles.active : ""}`}
-            onClick={() => navigate("/reels")}
-          >
-            Reels
-          </button>
-          <button
-            className={`${styles.navLink} ${isActive("/messages") ? styles.active : ""}`}
-            onClick={() => navigate("/messages")}
-          >
-            Messages
-          </button>
-          <button
-            className={`${styles.navLink} ${isActive("/profile") ? styles.active : ""}`}
-            onClick={() => navigate("/profile")}
-          >
-            Profile
-          </button>
-        </nav>
-
-        <button className={styles.logoutButton} onClick={handleLogout}>
-          Logout
+      {/* Left Sidebar for Desktop */}
+      <aside className={styles.leftSidebar}>
+        <button
+          className={`${styles.navLink} ${location.pathname === "/" ? styles.active : ""}`}
+          onClick={() => navigate("/")}
+          title="Home"
+        >
+          🏠 Home
+        </button>
+        <button
+          className={`${styles.navLink} ${location.pathname === "/search" ? styles.active : ""}`}
+          onClick={() => navigate("/search")}
+          title="Search"
+        >
+          🔍 Search
+        </button>
+        <button
+          className={styles.navLink}
+          onClick={() => alert("Add functionality coming soon")}
+          title="Add"
+        >
+          ➕ Add
+        </button>
+        <button
+          className={`${styles.navLink} ${location.pathname === "/reels" ? styles.active : ""}`}
+          onClick={() => navigate("/reels")}
+          title="Reels"
+        >
+          🎬 Reels
+        </button>
+        <button
+          className={`${styles.navLink} ${location.pathname === "/profile" ? styles.active : ""}`}
+          onClick={() => navigate("/profile")}
+          title="Profile"
+        >
+          👤 Profile
         </button>
       </aside>
 
-      {/* Main Content Area */}
-      <main className={styles.feed}>
+      {/* Main Content */}
+      <main className={styles.mainContent}>
         <Outlet />
       </main>
 
-      {/* Right Sidebar */}
-      <aside className={styles.rightSidebar}>
-        <h3>Suggestions</h3>
-        <ul className={styles.suggestionsList}>
-          <li>DevFriend1</li>
-          <li>CoderGal</li>
-          <li>OpenAI_Bot</li>
-        </ul>
-      </aside>
-    </div>
+      {/* Bottom Navigation for Mobile */}
+      <nav className={styles.bottomNav}>
+        <button
+          className={`${styles.iconButton} ${location.pathname === "/" ? styles.active : ""}`}
+          onClick={() => navigate("/")}
+          aria-label="Home"
+        >
+          🏠
+        </button>
+        <button
+          className={`${styles.iconButton} ${location.pathname === "/search" ? styles.active : ""}`}
+          onClick={() => navigate("/search")}
+          aria-label="Search"
+        >
+          🔍
+        </button>
+        <button
+          className={styles.iconButton}
+          onClick={() => alert("Add functionality coming soon")}
+          aria-label="Add"
+        >
+          ➕
+        </button>
+        <button
+          className={`${styles.iconButton} ${location.pathname === "/reels" ? styles.active : ""}`}
+          onClick={() => navigate("/reels")}
+          aria-label="Reels"
+        >
+          🎬
+        </button>
+        <button
+          className={`${styles.iconButton} ${location.pathname === "/profile" ? styles.active : ""}`}
+          onClick={() => navigate("/profile")}
+          aria-label="Profile"
+        >
+          👤
+        </button>
+      </nav>
+    </>
   );
 }

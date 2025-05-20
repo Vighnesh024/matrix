@@ -1,0 +1,116 @@
+/* Desktop styles */
+.leftSidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 100vh;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.navLink {
+  background: none;
+  border: none;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+  color: #333;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.navLink:hover,
+.active {
+  background-color: #d4aa00;
+  color: white;
+}
+
+.mainContent {
+  margin-left: 180px;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+/* Top bar for mobile */
+.topBar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.messagesIcon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Bottom nav for mobile */
+.bottomNav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.iconButton:hover,
+.iconButton.active {
+  color: #d4aa00;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .leftSidebar {
+    display: none;
+  }
+
+  .mainContent {
+    margin: 50px 0 50px 0; /* top + bottom nav space */
+    padding: 1rem;
+  }
+
+  .topBar {
+    display: flex;
+  }
+
+  .bottomNav {
+    display: flex;
+  }
+}
