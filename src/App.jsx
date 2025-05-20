@@ -6,7 +6,6 @@ import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import Messages from "./pages/Messages";
-import Create from "./pages/Create";
 import Search from "./pages/Search";
 import Reels from "./pages/Reels";
 import Notifications from "./pages/Notifications";
@@ -19,7 +18,6 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/messages" element={<Messages />} />
-          <Route path="/create" element={<Create />} />
           <Route path="/search" element={<Search />} />
           <Route path="/reels" element={<Reels />} />
           <Route path="/notifications" element={<Notifications />} />
