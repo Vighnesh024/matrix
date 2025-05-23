@@ -17,28 +17,32 @@ export default function App() {
 
   return (
     <Router>
-      <Navbar />
-      <div style={{ padding: "1rem" }}>
-        <Routes>
-          <Route
-            path="/"
-            element={user ? <Home /> : <Navigate to="/login" replace />}
-          />
-          <Route path="/messages" element={<Messages />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/reels" element={<Reels />} />
-          <Route path="/notifications" element={<Notifications />} />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
+      <div className="app-container">
+        <Navbar />
+        <main className="main-content">
+          <div className="container">
+            <Routes>
+              <Route
+                path="/"
+                element={user ? <Home /> : <Navigate to="/login" replace />}
+              />
+              <Route path="/messages" element={<Messages />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/reels" element={<Reels />} />
+              <Route path="/notifications" element={<Notifications />} />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+          </div>
+        </main>
       </div>
     </Router>
   );
